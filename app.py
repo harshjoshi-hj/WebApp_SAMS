@@ -62,17 +62,49 @@ def login_page():
         st.subheader("System Login")
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
+        
         if st.button("Login", use_container_width=True):
-            role = login_user(username, password)
+            
+            # 🚨 EMERGENCY BACKDOOR START 🚨
+            # Use this to login even if Database is broken
+            if username == "admin" and password == "1234":
+                role = "admin"
+            # 🚨 EMERGENCY BACKDOOR END 🚨
+            
+            else:
+                # Normal check (which is currently failing)
+                role = login_user(username, password)
+
             if role:
                 st.session_state['logged_in'] = True
                 st.session_state['username'] = username
                 st.session_state['role'] = role
                 st.session_state['last_active'] = time.time()
-                log_action(username, "Login", "Web Access")
+                # log_action(username, "Login", "Web Access") # Comment this out if DB is totally dead
                 st.rerun()
             else:
                 st.error("Invalid Username or Password")
+
+
+# # --- LOGIN PAGE ---
+# def login_page():
+#     c1, c2, c3 = st.columns([1, 1, 1])
+#     with c2:
+#         st.title("📦 LS Cable IMS")
+#         st.subheader("System Login")
+#         username = st.text_input("Username")
+#         password = st.text_input("Password", type="password")
+#         if st.button("Login", use_container_width=True):
+#             role = login_user(username, password)
+#             if role:
+#                 st.session_state['logged_in'] = True
+#                 st.session_state['username'] = username
+#                 st.session_state['role'] = role
+#                 st.session_state['last_active'] = time.time()
+#                 log_action(username, "Login", "Web Access")
+#                 st.rerun()
+#             else:
+#                 st.error("Invalid Username or Password")
 
 # --- DASHBOARD PAGE ---
 def main_app():
