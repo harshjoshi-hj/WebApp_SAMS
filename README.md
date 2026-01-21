@@ -64,17 +64,24 @@ webapp_sams/
 ⚙️ Installation & Setup
 
 1. Clone the Repository
-git clone <repository-url>
+```git clone https://github.com/harshjoshi-hj/WebApp_SAMS.git
+
 cd webapp_sams
+```
 2. Install Dependencies
+```
 pip install -r requirements.txt
+```
 3. Database Configuration
 This app connects to a PostgreSQL database. Ensure you have the following tables set up in your database (e.g., Supabase, local Postgres):
 
 Click to view SQL Schema
-4. Run the Application
-streamlit run app.py
 
+4. Run the Application
+
+```
+streamlit run app.py
+```
 
 👨‍💻 Credits
 
